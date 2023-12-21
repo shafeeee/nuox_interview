@@ -1,0 +1,80 @@
+<!-- home-page.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Your other head elements -->
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>SHARE HOLDERS</h1>
+        </header>
+        <div class="navigation">
+            <a href="/add-share-holder" class="button">Add Shareholder</a>
+            <a href="/share-holder-summary" class="button">Shareholder Summary</a>
+            <a href="/share-amount-summary" class="button">Share Amount Summary</a>
+        </div>
+        <% if (successMessage) { %>
+            <div class="alert">
+                <%= successMessage %>
+            </div>
+            <% } %>
+                <!-- Display shareholder data in a table -->
+                <% if (shareholders && shareholders.length> 0) { %>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Mobile Number</th>
+                                <th>Country</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (let i=0; i < shareholders.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= shareholders[i].name %>
+                                    </td>
+                                    <td>
+                                        <%= shareholders[i].mobile_number %>
+                                    </td>
+                                    <td>
+                                        <%= shareholders[i].country %>
+                                    </td>
+                                    <td>
+                                        <a href="/buy-share/<%= shareholders[i].id %>/<%= shareholders[i].name %>" class="button">Buy Share</a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                    <% } else { %>
+                        <p>No shareholders found.</p>
+                        <% } %>
+
+                            <!-- Your other content -->
+
+    </div>
+    <script>
+        // Function to remove the success message from the URL without triggering a page reload
+        function clearSuccessMessage() {
+            const url = new URL(window.location.href);
+            url.searchParams.delete('success');
+            window.history.replaceState({}, document.title, url);
+        }
+
+        // Call the function to clear the success message when the page is loaded
+        document.addEventListener('DOMContentLoaded', clearSuccessMessage);
+    </script>
+</body>
+
+</html>

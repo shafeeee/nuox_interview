@@ -32,9 +32,9 @@
  Some pages are not responsive
 
  There are still lot of perfection, optimization needed. i just leave it as is due to the less time.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
- How to install?
 
+ How to install?
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
  1. After clone, Run npm install 
  2. Check the .env-example , change the values accordingly, like, dbname, dbuser,dbpassword and dbhost and rename it .env
  3. Run npx knex migrate:latest until all upto date

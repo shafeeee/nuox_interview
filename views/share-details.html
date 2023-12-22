@@ -1,0 +1,54 @@
+<!-- share-details.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Details</title>
+    <!-- Your other head elements -->
+    <link rel="stylesheet" href="/css/share-details.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <a href="/" class="back-button">Back to Home</a>
+        <header>
+            <h1>SHARE DETAILS</h1>
+        </header>
+
+        <!-- Display shareholder details in a table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Shareholder Name</th>
+                    <th>Share Amount</th>
+                    <th>Duration</th>
+                    <th>Installment Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < shareholderDetails.length; i++) { %>
+                    <tr>
+                        <td><%= shareholderDetails[i].name %></td>
+                        <td><%= shareholderDetails[i].due_amount %></td>
+                        <td><%= shareholderDetails[i].duration %> years</td>
+                        <td><%= shareholderDetails[i].installment_type %></td>
+                        <td>
+                            <a href="/share-payment-details/<%= shareholderDetails[i].share_id %>" class="button">Details</a>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <!-- Your other content -->
+
+    </div>
+
+</body>
+
+</html>

@@ -5,8 +5,18 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
+   
     // Fetch data from the shareholder table
-    const shareholders = await knex("shareholder").select("*");
+    const shareholders = await knex("shareholder")
+      .select("shareholder.*")
+      .count("share_details.id as share_details_count")
+      .leftJoin(
+        "share_details",
+        "shareholder.id",
+        "=",
+        "share_details.shareholder_id"
+      )
+      .groupBy("shareholder.id");
 
     const successMessage = req.query.success; // from the add share holder screen
 

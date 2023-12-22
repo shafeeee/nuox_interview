@@ -2,20 +2,22 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f8f0;
+    /* background-color: #f0f8f0; */
     /* Light green background */
     color: #333;
     /* Dark text color */
+    background-color: #f0f0f0;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     /* White container background */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     /* Box shadow for a subtle elevation effect */
+    margin-top: 10%;
 }
 
 header {

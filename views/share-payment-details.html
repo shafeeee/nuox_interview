@@ -1,0 +1,86 @@
+<!-- shareholder-details.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shareholder Details</title>
+    <link rel="stylesheet" href="/css/share-payment-details.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <a href="/share-details/<%= shareholderDetails.shareholder_id %>" class="back-button"> > Back</a>
+        <header>
+            <h1>SHAREHOLDER DETAILS</h1>
+        </header>
+        <div class="details-panel">
+            <!-- Display shareholder details -->
+            <div class="shareholder-info">
+                <h2>
+                    <%= shareholderDetails.name %>
+                </h2>
+                <p><strong>Total Amount:</strong>
+                    <%= shareholderDetails.due_amount %>
+                </p>
+                <p><strong>Due Amount:</strong>
+                    <%= shareholderDetails.total_due %>
+                </p>
+                <p><strong>Paid Amount:</strong>
+                    <%= shareholderDetails.total_paid %>
+                </p>
+                <p><strong>Duration:</strong>
+                    <%= shareholderDetails.duration %> years
+                </p>
+                <p><strong>Installment Type:</strong>
+                    <%= shareholderDetails.installment_type %>
+                </p>
+                <p><strong>Start Date:</strong>
+                    <%= shareholderDetails.date %>
+                </p>
+            </div>
+
+            <!-- Display payment history table -->
+            <div class="payment-history">
+                <h2>Payment History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i=0; i < paymentHistory.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%= paymentHistory[i].payment_date %>
+                                </td>
+                                <td>
+                                    <%= paymentHistory[i].amount %>
+                                </td>
+                                <td>
+                                    <% if (paymentHistory[i].status===0) { %>
+                                        <form action="/share-payment-details/make-payment" method="post">
+                                            <input type="hidden" name="paymentId" value="<%= paymentHistory[i].id %>">
+                                            <button type="submit" class="button">Make Payment</button>
+                                        </form>
+                                        <% } else { %>
+                                            <span>Paid</span>
+                                            <% } %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

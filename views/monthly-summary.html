@@ -1,0 +1,95 @@
+<!-- monthly-summary.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Summary</title>
+    <link rel="stylesheet" href="/css/monthly-summary.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <a href="/" class="back-button">Back to Home</a>
+        <header>
+            <h1>MONTHLY SUMMARY - <%= formattedMonthYear %>
+            </h1>
+        </header>
+
+        <form action="/monthly-summary" method="get">
+            <label for="monthYear">Select Month and Year:</label>
+            <input type="month" id="monthYear" name="monthYear">
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="total-panel">
+            <h2>Total Amounts</h2>
+            <p>Total Expected Amount: <%= totalExpectedAmount.toFixed(2) %>
+            </p>
+            <p>Total Monthly Collected: <%= totalMonthlyCollected.toFixed(2) %>
+            </p>
+            <p>Total Due Amount: <%= totalDueAmount.toFixed(2) %>
+            </p>
+        </div>
+
+        <!-- Display the data in a table -->
+        <% if (monthlySummary && monthlySummary.length> 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shareholder Name</th>
+                        <th>Due Payment Date</th>
+                        <th>Due Amount</th>
+                        <th>Paid Date</th>
+                        <th>Paid Amount</th>
+                        <th>Balance Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i=0; i < monthlySummary.length; i++) { %>
+                        <tr>
+                            <td>
+                                <%= monthlySummary[i].shareholder_name %>
+                            </td>
+                            <td>
+                                <%= monthlySummary[i].payment_date %>
+                            </td>
+                            <td>
+                                <%= monthlySummary[i].amount %>
+                            </td>
+                            <td>
+                                <%= monthlySummary[i].paid_date %>
+                            </td>
+                            <td>
+                                <% if (monthlySummary[i].status===0) { %>
+                                    0
+                                    <% } else { %>
+                                        <%= monthlySummary[i].due_amount %>
+                                            <% } %>
+                            </td>
+                            <td>
+                                <% if (monthlySummary[i].status===1) { %>
+                                    0
+                                    <% } else { %>
+                                        <%= monthlySummary[i].due_amount %>
+                                            <% } %>
+                            </td>
+
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+            <% } else { %>
+                <p>No data found for the selected month and year.</p>
+                <% } %>
+
+                    <!-- Your other content -->
+
+    </div>
+
+</body>
+
+</html>

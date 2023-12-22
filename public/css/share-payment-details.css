@@ -1,0 +1,125 @@
+/* share-payment-details.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.details-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.shareholder-info,
+.payment-history {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.shareholder-info h2,
+.payment-history h2 {
+    color: #333;
+}
+
+
+
+h2 {
+    color: #161616;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #767776;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.alert {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+.back-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    /* Adjust the margin as needed for spacing */
+    padding: 8px 12px;
+    /* Adjust padding for button size */
+    text-decoration: none;
+    color: #fff;
+    /* Text color */
+    background-color: #4CAF50;
+    /* Green background color */
+    border: none;
+    border-radius: 4px;
+    /* Optional: Add rounded corners */
+}

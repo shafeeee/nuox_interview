@@ -1,0 +1,41 @@
+<!-- share-holder-summary.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Holder Summary</title>
+    <!-- Include your CSS or other head elements -->
+    <link rel="stylesheet" href="/css/share-holder-summary.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <a href="/" class="back-button">Back to Home</a>
+        <h1>Share Holder Summary</h1>
+
+        <form action="/share-holder-summary" method="post">
+            <!-- Shareholder dropdown -->
+            <label for="selectedShareholder">Select Shareholder:</label>
+            <select id="selectedShareholder" name="selectedShareholder">
+                <% for (let i=0; i < shareholders.length; i++) { %>
+                    <option value="<%= shareholders[i].id %>">
+                        <%= shareholders[i].name %>
+                    </option>
+                    <% } %>
+            </select>
+
+            <!-- Submit button -->
+            <button type="submit">View Details</button>
+        </form>
+
+        <!-- Your other content -->
+
+    </div>
+
+</body>
+
+</html>

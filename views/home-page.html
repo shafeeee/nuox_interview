@@ -19,8 +19,8 @@
         </header>
         <div class="navigation">
             <a href="/add-share-holder" class="button">Add Shareholder</a>
-            <a href="/share-holder-summary" class="button">Shareholder Summary</a>
-            <a href="/share-amount-summary" class="button">Share Amount Summary</a>
+            <a href="/share-holder-summary" class="button">Shareholder's Payment Summary</a>
+            <a href="/monthly-summary" class="button">Monthly Summary</a>
         </div>
         <% if (successMessage) { %>
             <div class="alert">
@@ -52,6 +52,9 @@
                                     </td>
                                     <td>
                                         <a href="/buy-share/<%= shareholders[i].id %>/<%= shareholders[i].name %>" class="button">Buy Share</a>
+                                        <% if (shareholders[i].share_details_count > 0) { %>
+                                            <a href="/share-details/<%= shareholders[i].id %>" class="button">Share Details</a>
+                                        <% } %>
                                     </td>
                                 </tr>
                                 <% } %>

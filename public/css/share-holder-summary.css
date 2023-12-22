@@ -1,0 +1,74 @@
+/* ./public/css/share-holder-summary.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    /* Light grey background */
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    /* White background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10%;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    /* Green */
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+    /* Darker green on hover */
+}
+
+.back-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    /* Adjust the margin as needed for spacing */
+    padding: 8px 12px;
+    /* Adjust padding for button size */
+    text-decoration: none;
+    color: #fff;
+    /* Text color */
+    background-color: #4CAF50;
+    /* Green background color */
+    border: none;
+    border-radius: 4px;
+    /* Optional: Add rounded corners */
+}

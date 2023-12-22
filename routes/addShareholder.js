@@ -4,7 +4,7 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const knex = require("knex")(require("../knexfile"));
 const pino = require("pino")();
-const { validateForm, validationResult } = require("../middlewares/validation.js");
+const { validateForm, validationResult } = require("../middlewares/add_share_validation.js");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 

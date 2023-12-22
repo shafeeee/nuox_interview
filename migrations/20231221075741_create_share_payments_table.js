@@ -9,6 +9,7 @@ exports.up = function (knex) {
       .inTable("share_details");
     table.date("payment_date");
     table.decimal("amount");
+    table.date("paid_date").nullable(); 
     table.boolean("status").defaultTo(false);
   });
 };

@@ -8,11 +8,11 @@ exports.up = function (knex) {
       .references("id")
       .inTable("shareholder");
     table.decimal("due_amount");
-    table.integer("duration").unsigned();
+    table.tinyint("duration").unsigned(); 
     table.enum("installment_type", [
       "monthly",
       "quarterly",
-      "half_yearly",
+      "half-yearly",
       "annually",
     ]);
     table.date("date");

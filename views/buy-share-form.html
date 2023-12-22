@@ -1,0 +1,152 @@
+<!-- buy-share-form.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Share Form</title>
+    <link rel="stylesheet" href="/css/buy-share.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <a href="/" class="back-button">Back to Home</a>
+        <header>
+            <h1>BUY SHARE</h1>
+
+            <!-- Display the shareholder's name -->
+            <p><b>Shareholder: <%= shareholderName %>
+                </b></p>
+        </header>
+        <!-- Display validation errors -->
+        <% if (typeof errors !=='undefined' && errors.length> 0) { %>
+            <ul class="error-list">
+                <% for (let i=0; i < errors.length; i++) { %>
+                    <li>
+                        <%= errors[i].msg %>
+                    </li>
+                    <% } %>
+            </ul>
+            <% } %>
+                <!-- Buy Share Form -->
+                <form action="/buy-share" method="post">
+                    <!-- Hidden input for shareholder id -->
+                    <input type="hidden" name="shareholderId" value="<%= shareholderId %>">
+
+                    <!-- Duration select box -->
+                    <label for="duration">Duration:</label>
+                    <select id="duration" name="duration">
+                        <option value="1">1 Year</option>
+                        <option value="2">2 Years</option>
+                        <option value="3">3 Years</option>
+                        <option value="4">4 Years</option>
+                        <option value="5">5 Years</option>
+                    </select>
+
+                    <!-- Installment type select box -->
+                    <label for="installmentType">Installment Type:</label>
+                    <select id="installmentType" name="installmentType">
+                        <option value="monthly">Monthly</option>
+                        <option value="quarterly">Quarterly</option>
+                        <option value="half-yearly">Half-Yearly</option>
+                        <option value="annually">Annually</option>
+                    </select>
+
+                    <!-- Total amount per year input -->
+                    <label for="totalAmount">Total Amount per Year:</label>
+                    <input type="number" id="totalAmount" name="totalAmount" required>
+
+                    <!-- First installment starts on date field -->
+                    <label for="startDate">First Installment Starts On:</label>
+                    <input type="date" id="startDate" name="startDate" required>
+
+                    <div id="installmentTableContainer"></div>
+
+                    <!-- Submit button -->
+                    <button type="submit">Submit</button>
+                </form>
+
+                <!-- Your other content -->
+
+    </div>
+    <script>
+        // jQuery script for dynamic table generation
+        $(document).ready(function () {
+            $('#startDate').on('change', function () {
+                generateInstallmentTable();
+            });
+
+            $('#installmentType, #totalAmount, #duration').on('change', function () {
+                generateInstallmentTable();
+            });
+
+            function generateInstallmentTable() {
+                // Get user inputs
+                const startDate = new Date($('#startDate').val());
+                const installmentType = $('#installmentType').val();
+                const year = parseInt($('#duration').val());
+                const totalAmount = parseFloat($('#totalAmount').val()) * year;
+
+                // Clear existing table
+                $('#installmentTableContainer').empty();
+
+                // Generate new table
+                const table = $('<table>').addClass('installment-table');
+                const headerRow = $('<tr>').append('<th>Date</th>', '<th>Installment Amount</th>');
+
+                table.append(headerRow);
+
+                // Calculate and add rows
+                const monthsInAYear = 12;
+                let duration = 0;
+                let totalInstallment = 0;
+
+                if (installmentType === 'monthly') {
+                    duration = year * monthsInAYear;
+                } else if (installmentType === 'quarterly') {
+                    duration = year * 4;
+                } else if (installmentType === 'half-yearly') {
+                    duration = year * 2;
+                } else if (installmentType === 'annually') {
+                    duration = year;
+                }
+
+                // Calculate and add rows
+                for (let i = 0; i < duration; i++) {
+                    const installmentDate = new Date(startDate);
+                    if (installmentType === 'monthly') {
+                        installmentDate.setMonth(startDate.getMonth() + i);
+                    } else if (installmentType === 'quarterly') {
+                        installmentDate.setMonth(startDate.getMonth() + i * 3);
+                    } else if (installmentType === 'half-yearly') {
+                        installmentDate.setMonth(startDate.getMonth() + i * 6);
+                    } else if (installmentType === 'annually') {
+                        installmentDate.setFullYear(startDate.getFullYear() + i);
+                    }
+
+                    const installmentAmount = (totalAmount / duration).toFixed(2);
+                    totalInstallment += parseFloat(installmentAmount);
+
+                    const row = $('<tr>').append(
+                        $('<td>').text(installmentDate.toDateString()),
+                        $('<td>').text(installmentAmount)
+                    );
+
+                    table.append(row);
+                }
+
+                // Append the table to the container
+                $('#installmentTableContainer').append(table);
+                // Display total installment
+                const totalRow = $('<tr>').append('<td>Total</td>', `<td>${totalInstallment.toFixed(2)}</td>`);
+                $('#installmentTableContainer table').append(totalRow);
+            }
+        });
+    </script>
+</body>
+
+</html>

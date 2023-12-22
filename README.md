@@ -31,7 +31,7 @@
 
  Some pages are not responsive
 
- There are still lot of perfection, optimization needed. i just leave it as is due to the less time.
+ There are still lot of perfection, optimization needed. i just leave it as it is due to the less time.
 
  How to install?
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -8,7 +8,7 @@ router.get("/:id", async (req, res) => {
 
   try {
     // Fetch shareholder details and associated share_details
-    const shareholderDetails = await knex("shareholder")
+    const shareholderDetails = await knex("share_details")
       .select(
         "shareholder.name",
         "share_details.due_amount",
@@ -16,12 +16,9 @@ router.get("/:id", async (req, res) => {
         "share_details.installment_type",
         "share_details.id as share_id"
       )
-      .leftJoin(
-        "share_details",
-        "shareholder.id",
-        "=",
-        "share_details.shareholder_id"
-      )
+      .leftJoin("shareholder", function () {
+        this.on("share_details.shareholder_id", "=", "shareholder.id");
+      })
       .where("shareholder.id", shareholderId);
 
     if (!shareholderDetails) {

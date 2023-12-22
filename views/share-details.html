@@ -19,31 +19,36 @@
             <h1>SHARE DETAILS</h1>
         </header>
 
-        <!-- Display shareholder details in a table -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Shareholder Name</th>
-                    <th>Share Amount</th>
-                    <th>Duration</th>
-                    <th>Installment Type</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for (let i = 0; i < shareholderDetails.length; i++) { %>
+        <% if (shareholderDetails.length > 0) { %>
+            <!-- Display shareholder details in a table -->
+            <table>
+                <thead>
                     <tr>
-                        <td><%= shareholderDetails[i].name %></td>
-                        <td><%= shareholderDetails[i].due_amount %></td>
-                        <td><%= shareholderDetails[i].duration %> years</td>
-                        <td><%= shareholderDetails[i].installment_type %></td>
-                        <td>
-                            <a href="/share-payment-details/<%= shareholderDetails[i].share_id %>" class="button">Details</a>
-                        </td>
+                        <th>Shareholder Name</th>
+                        <th>Share Amount</th>
+                        <th>Duration</th>
+                        <th>Installment Type</th>
+                        <th>Action</th>
                     </tr>
-                <% } %>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < shareholderDetails.length; i++) { %>
+                        <tr>
+                            <td><%= shareholderDetails[i].name %></td>
+                            <td><%= shareholderDetails[i].due_amount %></td>
+                            <td><%= shareholderDetails[i].duration %> years</td>
+                            <td><%= shareholderDetails[i].installment_type %></td>
+                            <td>
+                                <a href="/share-payment-details/<%= shareholderDetails[i].share_id %>" class="button">Details</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <!-- Display message if no details are found -->
+            <p>No details found.</p>
+        <% } %>
 
         <!-- Your other content -->
 

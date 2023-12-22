@@ -64,7 +64,7 @@
                     <label for="startDate">First Installment Starts On:</label>
                     <input type="date" id="startDate" name="startDate" required>
 
-                    <div id="installmentTableContainer"></div>
+                    <div id="installmentTableContainer" style="display: none;"></div>
 
                     <!-- Submit button -->
                     <button type="submit">Submit</button>
@@ -141,6 +141,7 @@
 
                 // Append the table to the container
                 $('#installmentTableContainer').append(table);
+                $('#installmentTableContainer').show();
                 // Display total installment
                 const totalRow = $('<tr>').append('<td>Total</td>', `<td>${totalInstallment.toFixed(2)}</td>`);
                 $('#installmentTableContainer table').append(totalRow);

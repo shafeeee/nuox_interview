@@ -35,11 +35,12 @@
 
  How to install?
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 1. After clone, Run npm install 
+ 1. After clone, Run `npm install` 
  2. Check the .env-example , change the values accordingly, like, dbname, dbuser,dbpassword and dbhost and rename it .env
- 3. Run npx knex migrate:latest until all upto date
- 4. Go to the host and port name, you can start testing by add share holder.
- 5. Supported browser Chrome, Please test it with chrome.
+ 3. Run `npx knex migrate:latest` until all upto date
+ 4. Run `node app.js`
+ 5. Go to the host and port name, you can start testing by add share holder.
+ 6. Supported browser Chrome, Please test it with chrome.
 
 
 
